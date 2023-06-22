@@ -1,7 +1,6 @@
 import express, { NextFunction, Request, Response } from 'express'
 import morgan from 'morgan';
 import eventRoutes from './routes/eventRoutes';
-import react from 'react'
 
 const app = express();
 
