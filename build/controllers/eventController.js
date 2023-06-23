@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.deleteEvent = exports.editEvent = exports.addEvent = exports.getOneEvent = exports.getAllEvents = void 0;
+const getAllEvents = async (req, res, next) => { };
+exports.getAllEvents = getAllEvents;
+const getOneEvent = async (req, res, next) => { };
+exports.getOneEvent = getOneEvent;
+const addEvent = async (req, res, next) => { };
+exports.addEvent = addEvent;
+const editEvent = async (req, res, next) => { };
+exports.editEvent = editEvent;
+const deleteEvent = async (req, res, next) => { };
+exports.deleteEvent = deleteEvent;
