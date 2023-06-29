@@ -26,8 +26,7 @@ const eventSchema: Schema = new Schema<iEvent>({
   location: { type: String },
   host: {
     type: Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
+    ref: 'User'
   },
   cuisine: {
     type: String,
