@@ -3,7 +3,7 @@ import { Request } from 'express';
 import jwt from 'jsonwebtoken';
 import { iUser, User } from '../models/User';
 
-const secret = 'May the Force be with you.';
+const secret = 'We love food!';
 
 export const hashPassword = async (plainTextPassword: string) => {
     const saltRound = 12;
