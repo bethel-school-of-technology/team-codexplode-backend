@@ -36,10 +36,10 @@ const eventSchema: Schema = new Schema<iEvent>({
     type: String,
     required: true,
   },
-  participants: {
-    type: [participantSchema],
-    required: true,
-  },
+  participants: [{ 
+    type: Schema.Types.ObjectId, 
+    ref: 'User' 
+  }],
 });
 
 const Event = model<iEvent>('Event', eventSchema);
