@@ -5,7 +5,9 @@ import { verifyUser } from '../services/auth';
 
 export const getAllEvents: RequestHandler = async (req, res) => {
   try {
-    const events = await Event.find().populate('host');
+    const events = await Event.find({})
+      .populate<{ host: iUser }>('host')
+      .populate<{ participants: iUser[] }>('participants');
     res.status(200).json(events);
   } catch (error) {
     res.status(404).json(error);
