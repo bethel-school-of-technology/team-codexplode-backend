@@ -11,8 +11,6 @@ interface iEvent extends Document {
   participants: Types.Array<Schema.Types.String>;
 }
 
-const participantSchema = new Schema({ name: String });
-
 const eventSchema: Schema = new Schema<iEvent>({
   mediaCardUrl: { type: String },
   title: {
