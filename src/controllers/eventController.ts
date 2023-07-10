@@ -45,7 +45,7 @@ export const editEvent: RequestHandler = async (req, res, next) => {
 
   if (eventFound && eventFound.host.equals(user._id)) {
     try {
-      await Event.findByIdAndUpdate(searchId, newEvent);
+      await eventFound.updateOne(newEvent);
       res.status(200).json(newEvent);
     } catch (error) {
       res.status(400).json(error);
