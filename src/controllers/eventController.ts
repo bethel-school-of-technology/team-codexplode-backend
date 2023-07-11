@@ -14,7 +14,16 @@ export const getAllEvents: RequestHandler = async (req, res) => {
   }
 };
 
-export const getOneEvent: RequestHandler = async (req, res, next) => {};
+export const getOneEvent: RequestHandler = async (req, res, next) => {
+  try {
+    const event = await Event.findById(req.params.id)
+      .populate<{ host: iUser }>('host', '_id username firstName lastName')
+      .populate<{ participants: iUser[] }>('participants', '_id username firstName lastName');
+    res.status(200).json(event);
+  } catch (error) {
+    res.status(404).json(error);
+  }
+};
 
 export const addEvent: RequestHandler = async (req, res, next) => {
   let user: iUser | null = await verifyUser(req);
