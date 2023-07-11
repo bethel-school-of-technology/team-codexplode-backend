@@ -124,4 +124,24 @@ export const removeParticipant: RequestHandler = async (req, res, next) => {
   }
 };
 
-export const deleteEvent: RequestHandler = async (req, res, next) => {};
+export const deleteEvent: RequestHandler = async (req, res, next) => {
+  let user: iUser | null = await verifyUser(req);
+  let eventFound = await Event.findById(req.params.id);
+
+  if (!user) {
+    return res.status(401).json('Unauthorized');
+  } else if (!eventFound || eventFound === null) {
+    return res.status(404).json('Event not found');
+  }
+
+  if (eventFound && eventFound.host.equals(user._id)) {
+    try {
+      await eventFound.deleteOne();
+      res.status(200).json('Event deleted');
+    } catch (error) {
+      res.status(400).json(error);
+    }
+  } else {
+    res.status(401).json('Unauthorized');
+  }
+};
