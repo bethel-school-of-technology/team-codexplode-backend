@@ -1,17 +1,15 @@
-import mongoose, { Document, Schema, Types } from 'mongoose';
+import { Document, Schema, Types, model } from 'mongoose';
 
 interface iEvent extends Document {
   mediaCardUrl?: string;
   title: string;
   description: string;
   location?: string;
-  host: string;
+  host: Types.ObjectId;
   cuisine: string;
   meal: string;
   participants: Types.Array<Schema.Types.String>;
 }
-
-const participantSchema = new Schema({ name: String });
 
 const eventSchema: Schema = new Schema<iEvent>({
   mediaCardUrl: { type: String },
@@ -25,8 +23,8 @@ const eventSchema: Schema = new Schema<iEvent>({
   },
   location: { type: String },
   host: {
-    type: String,
-    required: true,
+    type: Schema.Types.ObjectId,
+    ref: 'User'
   },
   cuisine: {
     type: String,
@@ -36,12 +34,12 @@ const eventSchema: Schema = new Schema<iEvent>({
     type: String,
     required: true,
   },
-  participants: {
-    type: [participantSchema],
-    required: true,
-  },
+  participants: [{ 
+    type: Schema.Types.ObjectId, 
+    ref: 'User' 
+  }],
 });
 
-const Event = mongoose.model<iEvent>('Event', eventSchema);
+const Event = model<iEvent>('Event', eventSchema);
 
 export { iEvent, Event };
