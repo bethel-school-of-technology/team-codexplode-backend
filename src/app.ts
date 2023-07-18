@@ -4,11 +4,11 @@ import eventRoutes from './routes/eventRoutes';
 import userRoutes from './routes/userRoutes';
 import mongoose from 'mongoose';
 
-const connectionString: string = 'mongodb://127.0.0.1:27017/testDB';
+const connectionString: string = 'mongodb://127.0.0.1';
 
 mongoose.connect(connectionString).then(
-  () => console.log('database connection successful!'),
-  (err) => console.log('Error connecting to the database', err)
+	() => console.log('database connection successful!'),
+	(err) => console.log('Error connecting to the database', err)
 );
 
 const app = express();
@@ -23,7 +23,7 @@ app.use('/api/event', eventRoutes);
 app.use('/api/user', userRoutes);
 
 app.use((req: Request, res: Response, next: NextFunction) => {
-  res.status(404).end();
+	res.status(404).end();
 });
 
 app.listen(3000);
