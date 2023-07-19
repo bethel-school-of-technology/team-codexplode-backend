@@ -9,6 +9,7 @@ interface iEvent extends Document {
   cuisine: string;
   meal: string;
   participants: Types.Array<Schema.Types.String>;
+  when: string;
 }
 
 const eventSchema: Schema = new Schema<iEvent>({
@@ -24,7 +25,7 @@ const eventSchema: Schema = new Schema<iEvent>({
   location: { type: String },
   host: {
     type: Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'User',
   },
   cuisine: {
     type: String,
@@ -34,10 +35,13 @@ const eventSchema: Schema = new Schema<iEvent>({
     type: String,
     required: true,
   },
-  participants: [{ 
-    type: Schema.Types.ObjectId, 
-    ref: 'User' 
-  }],
+  participants: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    },
+  ],
+  when: { type: String },
 });
 
 const Event = model<iEvent>('Event', eventSchema);
