@@ -25,7 +25,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 // routes
-app.use('/api/event', eventRoutes);
+app.use('/api/events', eventRoutes);
 app.use('/api/user', userRoutes);
 
 app.use((req: Request, res: Response, next: NextFunction) => {
