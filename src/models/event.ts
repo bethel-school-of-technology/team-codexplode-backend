@@ -1,7 +1,7 @@
 import { Document, Schema, Types, model } from 'mongoose';
 
 interface iEvent extends Document {
-  mediaCardUrl?: string;
+  mediaCardUrl: string;
   title: string;
   description: string;
   location?: string;
