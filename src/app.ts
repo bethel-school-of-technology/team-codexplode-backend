@@ -18,6 +18,12 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const cors = require('cors');
+const corsOptions = {
+	origin: ['http://local:3000', 'http://localhost:8100']
+};
+app.use(cors(corsOptions));
+
 // routes
 app.use('/api/event', eventRoutes);
 app.use('/api/user', userRoutes);
