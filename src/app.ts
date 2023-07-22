@@ -4,7 +4,7 @@ import eventRoutes from './routes/eventRoutes';
 import userRoutes from './routes/userRoutes';
 import mongoose from 'mongoose';
 
-const connectionString: string = 'mongodb://127.0.0.1';
+const connectionString: string = 'mongodb://127.0.0.1:27017/testDB';
 
 mongoose.connect(connectionString).then(
 	() => console.log('database connection successful!'),
