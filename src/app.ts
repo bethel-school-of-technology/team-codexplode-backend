@@ -9,8 +9,6 @@ const connectionString: string = 'mongodb://127.0.0.1:27017/testDB';
 mongoose.connect(connectionString).then(
 	() => console.log('database connection successful!'),
 	(err) => console.log('Error connecting to the database', err)
-	() => console.log('database connection successful!'),
-	(err) => console.log('Error connecting to the database', err)
 );
 
 const app = express();
